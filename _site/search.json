@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ronit’s Blog",
+    "section": "",
+    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nMar 12, 2026\n\n\nRonit Patange\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nMar 9, 2026\n\n\nRonti Patange\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Recent graduate with foundational knowledge in Data analytics and hands-on experience gained through academic projects and internships.Prepared to start a career and make meaningful contributions with commitment and drive."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "til.html",
+    "href": "til.html",
+    "title": "Today I Learned",
+    "section": "",
+    "text": "I will Posts about things I learned."
+  },
+  {
+    "objectID": "about.html#bio",
+    "href": "about.html#bio",
+    "title": "About",
+    "section": "",
+    "text": "Recent graduate with foundational knowledge in Data analytics and hands-on experience gained through academic projects and internships.Prepared to start a career and make meaningful contributions with commitment and drive."
+  },
+  {
+    "objectID": "about.html#skills",
+    "href": "about.html#skills",
+    "title": "About",
+    "section": "Skills",
+    "text": "Skills\n\nSQL\nExcel\nPython"
+  },
+  {
+    "objectID": "about.html#social-links",
+    "href": "about.html#social-links",
+    "title": "About",
+    "section": "Social Links",
+    "text": "Social Links\nConnect with me on the platforms linked in the header above."
+  }
+]

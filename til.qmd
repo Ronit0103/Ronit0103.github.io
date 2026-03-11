@@ -1,0 +1,6 @@
+---
+title: "Today I Learned"
+description: "A daily log of insights, mini-lessons, and 'aha!' moments. This is my commitment to becoming 1% smarter every day through deliberate curiosity and continuous learning."
+---
+
+I will Posts about things I learned.

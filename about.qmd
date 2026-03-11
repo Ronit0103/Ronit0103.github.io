@@ -1,0 +1,29 @@
+---
+title: "About"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com
+    - icon: github
+      text: Github
+      href: https://github.com
+
+---
+
+## Bio
+
+Recent graduate with foundational knowledge in Data analytics and hands-on experience gained through academic projects and
+internships.Prepared to start a career and make meaningful contributions with commitment and drive.
+
+## Skills
+
+- SQL
+- Excel
+- Python
+
+## Social Links
+
+Connect with me on the platforms linked in the header above.
