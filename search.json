@@ -1,0 +1,163 @@
+[
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "R.P.\n  \n    \n      About\n      \n      Contact\n    \n    \n      ☀\n      ☽\n    \n  \n\n\n\n\n\n\nHello, I’m Ronit! This is my learning blog. Welcome!\nI will soon be posting my process of creating this Quarto blog and the differnt things i learned on the way."
+  },
+  {
+    "objectID": "posts/secondpost.html",
+    "href": "posts/secondpost.html",
+    "title": "Ronit Patange",
+    "section": "",
+    "text": "R.P.\n  \n    \n      About\n      \n      Contact\n    \n    \n      ☀\n      ☽\n    \n  \n\n\n\n\n\nI’ve always been drawn to how unpredictable the stock market feels. One headline drops, and suddenly a company is either flying or collapsing. That tension felt too good to leave as-is, so I turned it into a game.\nThat’s where Stock Rivals came from.\n\nWhat Stock Rivals is\nAt its core, it’s a real-time multiplayer strategy game. Everyone plays as an insider trader—not in the shady sense, but in the sense that you have information others don’t. You’re not just reacting to the market. You’re positioning yourself before it moves.\n\n\nHow the game works\nYou’re looking at a board with 8 companies. Some are stable, some swing wildly. That difference matters more than you’d think.\nEach round, you’re dealt 10 Intel Cards. These cards tell you exactly what’s about to happen to certain stocks. Maybe one jumps +15. Another drops -10. The twist is that prices don’t update immediately.\nYou get three turns to act before anything changes.\nSo the whole game becomes a quiet race. You’re buying and selling based on what you know is coming, while everyone else is doing the same with their own hidden info. When the round ends and prices finally shift, that’s when everything snaps into place.\nSome stocks show up more often in your hand and move more aggressively. Others are steadier but less rewarding. On top of that, there are special events—things like discounted share offers or ways to recover from a total wipeout—that can completely flip the standings.\n\n\nBuilding it without breaking it\nI wanted the game to feel fast. Not “it works” fast, but smooth enough that you don’t think about the tech at all.\nSo the stack was pretty straightforward:\n\nReact with TypeScript for the frontend\nTailwind for a clean, data-heavy UI\nSocket.IO to keep everything live and in sync\nExpress handling game logic, rooms, and players\n\nSounds clean on paper. In reality, it got messy.\n\n\nThe problems that actually mattered\n1. The mobile problem\nTrying to fit a full market dashboard, player actions, and a hand of cards onto a phone screen… that was rough.\nThe solution wasn’t one big idea. It was a bunch of small decisions—tighter typography, fixed layouts that don’t jump around, and cards that scale just enough to stay readable without taking over the screen.\n2. People disconnect. Constantly.\nAt first, if someone refreshed or lost connection, they were just… gone. Game over.\nThat wasn’t acceptable.\nSo I added persistent player IDs using local storage. Now if you drop and come back, the server recognizes you instantly. Your cash, your portfolio, your cards—it’s all still there.\n3. Hosting headaches\nEarly on, the server would randomly go down or freeze mid-game. Not great when you’re in the middle of a tense round.\nMemory limits and server sleep cycles were the culprits. Fixing it meant tightening up how the server loads resources and adding a keep-alive system so connections don’t quietly die in the background.\nEventually, I moved everything to a more stable setup. That’s when things finally felt reliable.\n\n\nWhere it landed\nRight now, the game runs smoothly, handles reconnects, and keeps up with real-time play without lagging behind.\nBut more than that, it feels right.\nThere’s that moment at the end of each round when prices update and you see whether your moves paid off. That’s the whole point. That mix of planning, risk, and surprise.\nBuilding it wasn’t just about getting the mechanics right. It was about making sure the experience holds up—even on a shaky mobile connection, even when someone refreshes at the worst possible time.\nAnyway, if you jump in, you’ll get it pretty quickly.\nSee you on the trading floor."
+  },
+  {
+    "objectID": "posts/firstpost.html",
+    "href": "posts/firstpost.html",
+    "title": "How I Finally Understood Git — and Why It Changed Everything",
+    "section": "",
+    "text": "So I recently started learning Git and honestly it was a bit overwhelming at first. There are a lot of commands and concepts thrown at you all at once. But once things started clicking, I realised how powerful it actually is. This post is just me writing down what I learned in the order it made sense to me."
+  },
+  {
+    "objectID": "posts/firstpost.html#what-is-git",
+    "href": "posts/firstpost.html#what-is-git",
+    "title": "How I Finally Understood Git — and Why It Changed Everything",
+    "section": "What is Git?",
+    "text": "What is Git?\nGit is basically a tool that tracks changes to your code over time. Every time you save a change in Git, it remembers it. So if you ever break something, you can go back to when things were working.\nI like to think of it as a really detailed undo button for your entire project."
+  },
+  {
+    "objectID": "posts/firstpost.html#cloning-a-project",
+    "href": "posts/firstpost.html#cloning-a-project",
+    "title": "How I Finally Understood Git — and Why It Changed Everything",
+    "section": "Cloning a Project",
+    "text": "Cloning a Project\nThe first thing I actually did in a real project was clone a repository. Cloning just means downloading a project from somewhere like GitHub onto your own computer."
+  },
+  {
+    "objectID": "posts/firstpost.html#adding-and-committing",
+    "href": "posts/firstpost.html#adding-and-committing",
+    "title": "How I Finally Understood Git — and Why It Changed Everything",
+    "section": "Adding and Committing",
+    "text": "Adding and Committing\nThis one confused me for a while. Saving a file in your editor doesn’t save it in Git. You have to do it yourself in two steps. First you add the files you want to save. This is like picking up the things you want to pack. Then you commit, which is like actually sealing the box and labelling it. The label is your commit message, and writing a good one matters a lot. Something like “fixed the login button on mobile” is so much more useful than “fixed stuff” when you’re looking back weeks later. I started committing more often once I understood this.\nSmall commits with clear messages make everything easier to follow."
+  },
+  {
+    "objectID": "posts/firstpost.html#branches",
+    "href": "posts/firstpost.html#branches",
+    "title": "How I Finally Understood Git — and Why It Changed Everything",
+    "section": "Branches",
+    "text": "Branches\nThis is the part that made the biggest difference for me. A branch is basically its own separate version of the project where you can make changes without touching the main code. So if I want to try building a new feature, I make a branch, work on it there, and the main project stays completely untouched the whole time. If the feature works out, I merge it back in. If it doesn’t, ’I just delete the branch and nothing is lost. It felt a bit weird at first but now I can’t imagine working without it."
+  },
+  {
+    "objectID": "posts/firstpost.html#conflict-resolution",
+    "href": "posts/firstpost.html#conflict-resolution",
+    "title": "How I Finally Understood Git — and Why It Changed Everything",
+    "section": "Conflict Resolution",
+    "text": "Conflict Resolution\nWhen two people change the same part of the same file on different branches and then try to merge, Git doesn’t know which version to keep. So it flags it as a conflict and asks you to sort it out yourself. It looks a bit scary the first time but it’s actually Git being helpful. It shows you both versions side by side and you just decide what the final version should look like. Once I stopped panicking and just read what Git was showing me, it made total sense."
+  },
+  {
+    "objectID": "posts/firstpost.html#keeping-main-safe",
+    "href": "posts/firstpost.html#keeping-main-safe",
+    "title": "How I Finally Understood Git — and Why It Changed Everything",
+    "section": "Keeping Main Safe",
+    "text": "Keeping Main Safe\nThe main branch is basically your live, working version of the project. The thing people actually use. So you never want to work directly on it and risk breaking something. The way it works is you always branch off, do your work, get it reviewed if you’re working with others, and only merge it into main once you’re sure it’s good. This keeps main stable and deployable at all times. It’s a simple rule but it changes everything about how confidently you can work."
+  },
+  {
+    "objectID": "posts/firstpost.html#collaboration-and-history",
+    "href": "posts/firstpost.html#collaboration-and-history",
+    "title": "How I Finally Understood Git — and Why It Changed Everything",
+    "section": "Collaboration and History",
+    "text": "Collaboration and History\nOne of the things I didn’t expect to appreciate so much is the history Git keeps. Every commit from every person on the team is saved forever. You can see exactly what changed, who changed it, and why they said they changed it. This is really useful when something breaks. Instead of guessing, you can just look back through the history and find the exact commit that caused the problem. And if you need to undo it, you can do that without touching anything else."
+  },
+  {
+    "objectID": "posts/firstpost.html#final-thoughts",
+    "href": "posts/firstpost.html#final-thoughts",
+    "title": "How I Finally Understood Git — and Why It Changed Everything",
+    "section": "Final Thoughts",
+    "text": "Final Thoughts\nGit felt complicated when I first started but a lot of that was just unfamiliarity. The ideas behind it are actually pretty straightforward once you get past the commands. Make small commits, work on branches, keep main clean, and write decent commit messages. That’s most of it honestly."
+  },
+  {
+    "objectID": "posts/fourthpost.html",
+    "href": "posts/fourthpost.html",
+    "title": "Ronit Patange",
+    "section": "",
+    "text": "R.P.\n  \n    \n      About\n      \n      Contact\n    \n    \n      ☀\n      ☽"
+  },
+  {
+    "objectID": "posts/thirdpost.html#why-pure-c",
+    "href": "posts/thirdpost.html#why-pure-c",
+    "title": "I Ran Qwen3 0.6B Locally in Pure C: Every Operation From Token to Output",
+    "section": "Why Pure C?",
+    "text": "Why Pure C?\nPython hides too much. When you call model.generate() in a library, you get tokens back. You don’t get to see what the KV cache is doing, how sampling works, or why changing temperature changes the output. C forces you to be explicit about everything.\nAlso, Qwen3 0.6B fits in about 600MB at Q4 quantization and runs on a regular laptop CPU. No GPU needed. That made this whole thing possible."
+  },
+  {
+    "objectID": "posts/thirdpost.html#the-model-qwen3-0.6b",
+    "href": "posts/thirdpost.html#the-model-qwen3-0.6b",
+    "title": "I Ran Qwen3 0.6B Locally in Pure C: Every Operation From Token to Output",
+    "section": "The Model: Qwen3 0.6B",
+    "text": "The Model: Qwen3 0.6B\nQwen3 is Alibaba’s third-generation LLM family. The 0.6B version is the smallest, with 600 million parameters. It uses the transformer architecture, runs in a decoder-only mode, and follows the ChatML prompt format.\nAt Q4 quantization via GGUF it weighs around 600MB, handles up to 32k tokens of context, and is fast enough on CPU to actually use. Good size for tinkering."
+  },
+  {
+    "objectID": "posts/thirdpost.html#reading-the-model-file-gguf-vs-safetensors",
+    "href": "posts/thirdpost.html#reading-the-model-file-gguf-vs-safetensors",
+    "title": "I Ran Qwen3 0.6B Locally in Pure C: Every Operation From Token to Output",
+    "section": "Reading the Model File: GGUF vs SafeTensors",
+    "text": "Reading the Model File: GGUF vs SafeTensors\nBefore anything runs, you load the model off disk. Two formats come up constantly.\nSafeTensors is HuggingFace’s format. It’s clean and safe to load, but it stores weights at full or half precision. A 0.6B model at full precision is around 2.4GB. That’s too big for what I was doing.\nGGUF is the format used by llama.cpp. It was designed specifically for running models locally on regular hardware. The key feature is built-in quantization support. At Q4 (4-bit weights), the same 0.6B model is around 600MB. You lose a little quality, but for most tasks it’s barely noticeable.\nA GGUF file has three parts: a header that identifies the file format, a metadata section that describes the model (number of layers, vocabulary size, context length, etc.), and the actual weight data. Reading it in C is straightforward once you understand the layout."
+  },
+  {
+    "objectID": "posts/thirdpost.html#tokenization-turning-text-into-numbers",
+    "href": "posts/thirdpost.html#tokenization-turning-text-into-numbers",
+    "title": "I Ran Qwen3 0.6B Locally in Pure C: Every Operation From Token to Output",
+    "section": "Tokenization: Turning Text Into Numbers",
+    "text": "Tokenization: Turning Text Into Numbers\nModels don’t read text. They read numbers. Tokenization is the step that converts your input string into a list of integers.\nThe approach Qwen3 uses is called BPE (Byte Pair Encoding). It works by breaking text into subword pieces. Common words like “the” or “run” are usually one token. Less common words get split up. “tokenization” might become [“token”, “ization”]. Something totally unknown gets broken into small pieces the model has seen before.\nQwen3’s vocabulary has around 150,000 tokens. Each token is just an integer. “What is the capital of France?” might come out as something like [3838, 374, 279, 6864, 315, 9822, 30]. Those numbers get passed into the model.\nThe vocabulary size is a tradeoff. Bigger means better coverage and shorter sequences, but more memory for the embedding table."
+  },
+  {
+    "objectID": "posts/thirdpost.html#chat-templates-how-the-model-knows-youre-talking-to-it",
+    "href": "posts/thirdpost.html#chat-templates-how-the-model-knows-youre-talking-to-it",
+    "title": "I Ran Qwen3 0.6B Locally in Pure C: Every Operation From Token to Output",
+    "section": "Chat Templates: How the Model Knows You’re Talking to It",
+    "text": "Chat Templates: How the Model Knows You’re Talking to It\nRaw text in doesn’t work well. The model was trained to expect a specific conversation format called ChatML. It looks like this:\n&lt;|im_start|&gt;system\nYou are a helpful assistant.\n&lt;|im_end|&gt;\n&lt;|im_start|&gt;user\nWhat is the capital of France?\n&lt;|im_end|&gt;\n&lt;|im_start|&gt;assistant\nThe &lt;|im_start|&gt; and &lt;|im_end|&gt; tokens are special. The tokenizer treats them as single units, not individual characters. They tell the model who’s speaking and where turns begin and end.\nThe trick is leaving the assistant turn open at the end. That tells the model “generate from here.” Everything after that is completion.\nGet the format slightly wrong and the model either stops making sense or starts generating the prompt back at you. These tokens are load-bearing."
+  },
+  {
+    "objectID": "posts/thirdpost.html#the-transformer-a-plain-english-version",
+    "href": "posts/thirdpost.html#the-transformer-a-plain-english-version",
+    "title": "I Ran Qwen3 0.6B Locally in Pure C: Every Operation From Token to Output",
+    "section": "The Transformer: A Plain English Version",
+    "text": "The Transformer: A Plain English Version\nThis is where the actual computation happens. You have a list of token integers. The transformer turns them into a probability distribution over what comes next.\nHere’s the short version of what happens inside:\nEach token ID gets looked up in an embedding table, which gives you a vector of numbers representing that token. Those vectors go through 28 layers. Each layer has two parts: attention (which lets tokens look at other tokens in context) and a feed-forward network (which processes each token independently).\nAttention is what makes transformers powerful. Every token can look at every previous token and decide how much it matters. When the model is figuring out what “it” refers to in a sentence, attention is doing that work.\nAfter 28 layers, you get one final vector per position, and you multiply it against the vocabulary to get a score for every possible next token. Those scores are called logits. Higher score means the model thinks that token is more likely to come next.\nQwen3 specifically uses a few architectural choices worth knowing: RMSNorm for layer normalization, Rotary Positional Encoding (RoPE) so the model understands token order, and Grouped Query Attention which cuts KV cache memory roughly in half."
+  },
+  {
+    "objectID": "posts/thirdpost.html#the-kv-cache-why-generation-doesnt-get-slower-per-token",
+    "href": "posts/thirdpost.html#the-kv-cache-why-generation-doesnt-get-slower-per-token",
+    "title": "I Ran Qwen3 0.6B Locally in Pure C: Every Operation From Token to Output",
+    "section": "The KV Cache: Why Generation Doesn’t Get Slower Per Token",
+    "text": "The KV Cache: Why Generation Doesn’t Get Slower Per Token\nOne thing that confused me early on is why generating token 100 doesn’t take 100 times longer than generating token 1.\nThe answer is the KV cache. During attention, each token produces a key and value vector for every layer. Instead of recomputing those for every token on every step, the model stores them. When generating token 101, you only compute new keys and values for that token. Everything else is already cached.\nFor Qwen3 0.6B at a 2048-token context, the KV cache is around 117MB. Not trivial, and it grows with context length. For larger models with long contexts, the cache is often what limits how much you can fit in memory."
+  },
+  {
+    "objectID": "posts/thirdpost.html#temperature-and-top-p-controlling-randomness",
+    "href": "posts/thirdpost.html#temperature-and-top-p-controlling-randomness",
+    "title": "I Ran Qwen3 0.6B Locally in Pure C: Every Operation From Token to Output",
+    "section": "Temperature and Top-p: Controlling Randomness",
+    "text": "Temperature and Top-p: Controlling Randomness\nAfter the transformer runs, you have a logit score for every token in the vocabulary. You need to pick one.\nThe naive approach is just taking the highest score every time. That works but produces repetitive, predictable output.\nTemperature is a knob that adjusts how spread out the probabilities are. Low temperature makes the model more likely to pick the obvious next word. High temperature makes it more likely to pick something surprising. I found 0.7 to 0.8 to work well for Qwen3 0.6B.\nTop-p (nucleus sampling) is a filter that says: only sample from the tokens that together account for p% of the probability. At top-p 0.9, you’re ignoring the long tail of unlikely tokens. This keeps output sensible while still allowing variety.\nThese two settings interact. Low temperature plus low top-p gives focused, conservative output. High temperature plus high top-p gives diverse, sometimes chaotic output. Most people run both at moderate values and tweak from there."
+  },
+  {
+    "objectID": "posts/thirdpost.html#the-generation-loop",
+    "href": "posts/thirdpost.html#the-generation-loop",
+    "title": "I Ran Qwen3 0.6B Locally in Pure C: Every Operation From Token to Output",
+    "section": "The Generation Loop",
+    "text": "The Generation Loop\nPutting it all together, generation has two phases.\nFirst, prefill. You format the conversation using the ChatML template, tokenize it, and run the full sequence through the transformer. This fills the KV cache for all your input tokens. You’re not generating yet, just processing the prompt.\nSecond, the generation loop. You run one forward pass per token. Each pass takes the last token, runs it through the transformer using the KV cache for context, gets a logit vector, applies temperature and top-p, samples a token, decodes it to a string, prints it, and adds it to the context. Repeat until the model outputs the end-of-sequence token or you hit your limit.\nThat loop is the whole thing."
+  },
+  {
+    "objectID": "posts/thirdpost.html#what-i-actually-learned",
+    "href": "posts/thirdpost.html#what-i-actually-learned",
+    "title": "I Ran Qwen3 0.6B Locally in Pure C: Every Operation From Token to Output",
+    "section": "What I Actually Learned",
+    "text": "What I Actually Learned\nA few things that surprised me doing this:\nQuantization quality held up better than I expected. At Q4, the output was noticeably worse on tricky reasoning tasks but basically indistinguishable on straightforward Q&A. The size reduction is worth it for most use cases.\nSampling settings matter more than I thought. Temperature 1.0 made Qwen3 0.6B noticeably rambling. Dropping to 0.7 tightened it up. Small adjustments made a real difference in output quality.\nThe KV cache is where the memory goes. Not the weights, the cache. Long contexts eat memory fast and that’s the real constraint at runtime.\nThe 0.6B model has clear limits. It trips up on anything requiring multi-step reasoning or broad knowledge. But that actually makes it useful for understanding how these things work, because the failures are obvious and easy to trace."
+  },
+  {
+    "objectID": "posts/thirdpost.html#closing-thoughts",
+    "href": "posts/thirdpost.html#closing-thoughts",
+    "title": "I Ran Qwen3 0.6B Locally in Pure C: Every Operation From Token to Output",
+    "section": "Closing Thoughts",
+    "text": "Closing Thoughts\nWriting this from scratch in C took longer than expected and taught me more than any tutorial I’ve read. There’s something different about stepping through a forward pass in a debugger versus reading about transformers in theory. The theory makes sense abstractly. The debugger makes it real.\nIf you want to try something similar, llama.cpp is the practical starting point. It handles all of this correctly and the code is readable. Even just reading through it will teach you a lot.\nThe 0.6B model is a good size for this kind of project. Small enough to run anywhere, large enough to actually work."
+  }
+]
