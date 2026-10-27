@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ronit Patange — AI Automation Engineer</title>
+<meta name="description" content="Executive AI Automation Engineer working across AI automation, process engineering and data engineering. Projects in AI agents, RAG, computer vision and finance tools.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%230F1724'/%3E%3Cg transform='translate%286 6%29 scale%28.75%29' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 14V5h9M34 5h9v9M43 34v9h-9M14 43H5v-9' stroke='%233B82F6' stroke-width='4.5'/%3E%3Cpath d='M17.5 34V14h7.5a5.5 5.5 0 0 1 0 11h-7.5M24 25l7 9' stroke='%23F3F5F8' stroke-width='5.5'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F3F5F8;
+  --surface: #FAFBFD;
+  --ink: #0F1724;
+  --ink-2: #334155;
+  --muted: #5B6575;
+  --line: #D5DBE4;
+  --accent: #1D4ED8;
+  --accent-soft: #E8EEFC;
+  --sans: 'Schibsted Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Azeret Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+  --wrap: 1120px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --glass: rgba(250, 251, 253, .58);
+  --glass-edge: rgba(255, 255, 255, .75);
+  --glass-hi: rgba(255, 255, 255, .9);
+  --glass-sheen: rgba(255, 255, 255, .45);
+  --glass-ring: rgba(15, 23, 36, .07);
+  --glass-shadow: rgba(15, 23, 36, .12);
+  --glass-hover: rgba(15, 23, 36, .06);
+  --glass-active: rgba(15, 23, 36, .08);
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0B1018;
+    --surface: #121926;
+    --ink: #E8EDF5;
+    --ink-2: #C3CCDA;
+    --muted: #8E99AB;
+    --line: #233044;
+    --accent: #6EA8FF;
+    --accent-soft: #15233B;
+    --glass: rgba(18, 25, 38, .55);
+    --glass-edge: rgba(255, 255, 255, .1);
+    --glass-hi: rgba(255, 255, 255, .16);
+    --glass-sheen: rgba(255, 255, 255, .06);
+    --glass-ring: rgba(0, 0, 0, .35);
+    --glass-shadow: rgba(0, 0, 0, .45);
+    --glass-hover: rgba(255, 255, 255, .08);
+    --glass-active: rgba(255, 255, 255, .13);
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 17px/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+::selection { background: var(--accent); color: var(--bg); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+.label {
+  font: 500 12px/1.4 var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 16px; top: 16px; z-index: 10; background: var(--ink); color: var(--bg); padding: 8px 12px; }
+
+/* Header: floating glass capsule in the style of Apple's Liquid Glass:
+   blurred, saturated backdrop, bright top edge, soft sheen and shadow. */
+header {
+  position: sticky; top: 0; z-index: 5;
+  padding: 12px var(--gutter) 0;
+  pointer-events: none;
+}
+.bar {
+  pointer-events: auto;
+  position: relative;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  max-width: calc(var(--wrap) - 2 * var(--gutter));
+  height: 56px; margin: 0 auto; padding: 0 6px 0 16px;
+  border-radius: 999px;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 0 var(--glass-hi), 0 0 0 1px var(--glass-ring), 0 10px 30px var(--glass-shadow);
+}
+.bar::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(180deg, var(--glass-sheen), transparent 55%);
+}
+.bar > * { position: relative; }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .bar, .receipt { background: var(--surface); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .bar, .receipt { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; letter-spacing: -.01em; }
+.mark { width: 26px; height: 26px; flex: none; }
+.mark path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.mark .corners { stroke: var(--accent); stroke-width: 3; }
+.mark .glyph { stroke: var(--ink); stroke-width: 4.5; }
+nav ul { display: flex; gap: 2px; list-style: none; margin: 0; padding: 0; }
+nav a {
+  display: inline-flex; align-items: center; height: 44px; padding: 0 14px; border-radius: 999px;
+  font: 500 13px/1 var(--mono); text-decoration: none; color: var(--muted); letter-spacing: .02em;
+  transition: background .2s, color .2s;
+}
+nav a:not([aria-current]):hover { color: var(--ink); background: var(--glass-hover); }
+nav a:focus-visible { border-radius: 999px; }
+nav a[aria-current] { color: var(--ink); }
+/* Pill that slides under the link for the section in view (added by the script at the end). */
+nav ul { position: relative; isolation: isolate; }
+.nav-pill {
+  position: absolute; z-index: -1; top: 4px; bottom: 4px; left: 0; width: 0;
+  border-radius: 999px; background: var(--glass-active); box-shadow: inset 0 1px 0 var(--glass-hi);
+  opacity: 0; pointer-events: none;
+}
+
+/* Hero */
+.hero { position: relative; padding-block: clamp(56px, 10vw, 120px) clamp(56px, 8vw, 96px); }
+/* three.js pipeline scene: sits behind the hero, faded out under the text on the left. */
+.hero-3d {
+  position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 48% 85% at 76% 38%, #000 50%, transparent 88%);
+  mask-image: radial-gradient(ellipse 48% 85% at 76% 38%, #000 50%, transparent 88%);
+}
+.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: end; }
+.hero h1 {
+  font-size: clamp(2.6rem, 6.4vw, 5.25rem);
+  line-height: .98;
+  letter-spacing: -.045em;
+  font-weight: 500;
+  margin: 20px 0 28px;
+}
+.hero h1 em { font-style: normal; color: var(--accent); }
+.lede { font-size: clamp(1.05rem, 1.6vw, 1.2rem); color: var(--ink-2); max-width: 34em; margin: 0 0 32px; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 500 14px/1 var(--sans);
+  padding: 14px 20px; border-radius: 999px;
+  text-decoration: none; border: 1px solid var(--ink);
+  transition: background .2s, color .2s, transform .2s;
+}
+.btn-solid { background: var(--ink); color: var(--bg); }
+.btn-solid:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.btn-ghost:hover { background: var(--ink); color: var(--bg); }
+
+/* Receipts card */
+.receipt {
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px 24px 8px;
+  font-family: var(--mono);
+}
+.receipt-head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 14px; border-bottom: 1px dashed var(--line); }
+.receipt ul { list-style: none; margin: 0; padding: 0; }
+.receipt li {
+  display: grid; grid-template-columns: 7rem 1fr; gap: 4px 16px;
+  padding: 16px 0; border-bottom: 1px dashed var(--line);
+}
+.receipt li:last-child { border-bottom: 0; }
+.fig { font-size: 1.6rem; line-height: 1; font-weight: 500; letter-spacing: -.03em; color: var(--ink); grid-row: span 2; }
+.fig-what { font: 400 14px/1.4 var(--sans); color: var(--ink-2); }
+.fig-src { font-size: 12px; color: var(--accent); letter-spacing: .04em; }
+
+/* Sections */
+section { padding: clamp(64px, 9vw, 112px) 0; border-top: 1px solid var(--line); }
+.sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: clamp(28px, 4vw, 48px); }
+h2 { font-size: clamp(2rem, 4.4vw, 3.25rem); line-height: 1.02; letter-spacing: -.035em; font-weight: 500; margin: 10px 0 0; }
+
+/* Work index */
+.work { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.work li { border-bottom: 1px solid var(--line); }
+.row {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) 13rem 7.5rem;
+  gap: 8px 24px;
+  align-items: baseline;
+  padding: 26px 8px;
+  text-decoration: none;
+  transition: background .2s;
+}
+a.row:hover { background: var(--surface); }
+.n { font: 500 13px/1 var(--mono); color: var(--muted); }
+.row h3 { font-size: clamp(1.25rem, 2.2vw, 1.6rem); font-weight: 500; letter-spacing: -.025em; margin: 0 0 6px; line-height: 1.15; }
+.row p { margin: 0; color: var(--ink-2); font-size: 15.5px; max-width: 44em; }
+.tags { font: 400 12.5px/1.6 var(--mono); color: var(--muted); }
+.go { font: 500 12.5px/1 var(--mono); color: var(--accent); text-align: right; white-space: nowrap; }
+.go span { display: inline-block; transition: transform .2s; }
+a.row:hover .go span { transform: translate(3px, -3px); }
+.local { color: var(--muted); }
+.new {
+  font: 500 12px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase;
+  color: var(--accent); background: var(--accent-soft);
+  padding: 4px 7px; border-radius: 4px; margin-left: 10px; vertical-align: 4px;
+}
+
+/* About */
+.about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(32px, 6vw, 80px); }
+.about-grid p { margin: 0 0 18px; font-size: clamp(1.05rem, 1.5vw, 1.18rem); color: var(--ink-2); }
+.skills { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 28px 0 0; }
+.skills li { font: 400 13px/1 var(--mono); padding: 9px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-2); }
+
+/* Contact */
+.contact h2 { font-size: clamp(2.6rem, 7vw, 5.5rem); letter-spacing: -.045em; }
+.email {
+  display: inline-block; margin: 28px 0 40px;
+  font-size: clamp(1.2rem, 3vw, 2rem); letter-spacing: -.02em; font-weight: 500;
+  text-decoration: underline; text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px; text-underline-offset: 8px;
+  overflow-wrap: anywhere;
+}
+.email:hover { color: var(--accent); }
+.links { display: grid; grid-template-columns: repeat(3, 1fr); list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.links a {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  padding: 20px 4px; text-decoration: none; border-bottom: 1px solid var(--line);
+}
+.links li + li a { padding-left: 20px; border-left: 1px solid var(--line); }
+.links a:hover { color: var(--accent); }
+.links small { font: 400 12.5px/1.4 var(--mono); color: var(--muted); }
+
+footer { padding: 28px 0 40px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+/* Load-in */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  .rise { animation: rise .8s cubic-bezier(.16, 1, .3, 1) both; }
+  .rise:nth-child(2) { animation-delay: .08s; }
+  .rise:nth-child(3) { animation-delay: .16s; }
+  .rise:nth-child(4) { animation-delay: .24s; }
+  @keyframes rise { from { transform: translateY(18px); } }
+  .nav-pill { transition: left .5s cubic-bezier(.2, .8, .2, 1), width .5s cubic-bezier(.2, .8, .2, 1), opacity .3s; }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .9s cubic-bezier(.16, 1, .3, 1); }
+  .reveal.in { opacity: 1; transform: none; }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-grid, .about-grid { grid-template-columns: 1fr; }
+  .hero-3d { opacity: .6; -webkit-mask-image: radial-gradient(ellipse 85% 35% at 55% 80%, #000 30%, transparent 80%); mask-image: radial-gradient(ellipse 85% 35% at 55% 80%, #000 30%, transparent 80%); }
+  .row { grid-template-columns: 2.25rem minmax(0, 1fr); }
+  .row .tags, .row .go { grid-column: 2; text-align: left; }
+}
+@media (max-width: 640px) {
+  .links { grid-template-columns: 1fr; }
+  .links li + li a { padding-left: 4px; border-left: 0; }
+  .receipt { padding: 18px 16px 4px; }
+  .receipt li { grid-template-columns: 6rem 1fr; }
+  .fig { font-size: 1.3rem; }
+}
+@media (max-width: 380px) {
+  .brand-name { display: none; }
+}
+@media (max-width: 400px) {
+  .brand { gap: 8px; white-space: nowrap; }
+  .mark { width: 22px; height: 22px; }
+  .bar { padding: 0 4px 0 12px; }
+  nav a { font-size: 12px; letter-spacing: 0; padding: 0 9px; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#work">Skip to work</a>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="#top" aria-label="Ronit Patange, home">
+      <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+        <path class="corners" d="M5 14V5h9M34 5h9v9M43 34v9h-9M14 43H5v-9"/>
+        <path class="glyph" d="M17.5 34V14h7.5a5.5 5.5 0 0 1 0 11h-7.5M24 25l7 9"/>
+      </svg>
+      <span class="brand-name">Ronit Patange</span>
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <canvas class="hero-3d" aria-hidden="true"></canvas>
+    <div class="hero-grid">
+      <div>
+        <div class="label rise">Ronit Patange · AI automation engineer</div>
+        <h1 class="rise">AI automations that check <em>their own work.</em></h1>
+        <p class="lede rise">Executive AI Automation Engineer, working across AI automation, process engineering and data engineering. Some of my personal projects: a local agent that drives a browser, a regulatory assistant, food vision, an expense tracker, a multiplayer stock-trading game, and automated dashboards.</p>
+        <div class="ctas rise">
+          <a class="btn btn-solid" href="#work">See the work</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <aside class="receipt rise" aria-label="Measured results">
+        <div class="receipt-head">
+          <span class="label">Receipts</span>
+          <span class="label">measured</span>
+        </div>
+        <ul>
+          <li><span class="fig">3 / 3</span><span class="fig-what">chained browser runs passed, on a CPU-only laptop</span><span class="fig-src">Vion</span></li>
+          <li><span class="fig">13,000+</span><span class="fig-what">SEBI regulatory chunks indexed for retrieval</span><span class="fig-src">SEBI Regulatory Assistant</span></li>
+          <li><span class="fig">93%</span><span class="fig-what">accuracy naming Indian dishes from a photo, on a laptop iGPU</span><span class="fig-src">KhanaVision</span></li>
+          <li><span class="fig">0</span><span class="fig-what">accounts or logins needed to track spending</span><span class="fig-src">Expense Tracker</span></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+
+  <!-- To add a project: copy one <li> below, edit it, and renumber. -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="label">01 — Work</div>
+          <h2>Things I've built</h2>
+        </div>
+        <span class="label">8 projects</span>
+      </div>
+
+      <ol class="work">
+        <li>
+          <div class="row">
+            <span class="n">01</span>
+            <div>
+              <h3>Vion <span class="new">New</span></h3>
+              <p>A local AI agent with tool calling, on a laptop with no GPU. A 2B model picks the tools; a classifier drives a real Chrome through flight, shopping and wiki sites, and every price in the answer is checked against the page.</p>
+            </div>
+            <span class="tags">Python · Ollama · Playwright · Agents</span>
+            <span class="go local">Runs locally</span>
+          </div>
+        </li>
+        <li>
+          <a class="row" href="https://sebi-assistant-chat.vercel.app" target="_blank" rel="noopener" aria-labelledby="p-sebi">
+            <span class="n">02</span>
+            <div>
+              <h3 id="p-sebi">SEBI Regulatory Assistant</h3>
+              <p>RAG chatbot over 13,000+ indexed SEBI regulatory chunks, with auth, thread history, and a scope guardrail against off-topic and injection queries.</p>
+            </div>
+            <span class="tags">Python · RAG · LLM · Security</span>
+            <span class="go">Vercel <span>↗</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="row" href="https://expense-tracker-pwa-kappa.vercel.app" target="_blank" rel="noopener" aria-labelledby="p-expenses">
+            <span class="n">03</span>
+            <div>
+              <h3 id="p-expenses">Expense Tracker <span class="new">New</span></h3>
+              <p>iPhone home-screen app that turns bank SMS into transactions, sorted into daily expenses, investments and savings. A Google Sheet stores everything and emails a report on the 1st of every month. No accounts or logins.</p>
+            </div>
+            <span class="tags">JavaScript · PWA · Apps Script · iOS Shortcuts</span>
+            <span class="go">Vercel <span>↗</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="row" href="https://huggingface.co/spaces/RonitP1/KhanaVision" target="_blank" rel="noopener" aria-labelledby="p-khanavision">
+            <span class="n">04</span>
+            <div>
+              <h3 id="p-khanavision">KhanaVision</h3>
+              <p>Vision AI microservice that identifies Indian dishes from a photo, benchmarked across model sizes and hardware to hit 93% accuracy on a laptop iGPU.</p>
+            </div>
+            <span class="tags">Python · Computer Vision · LLM · Gradio</span>
+            <span class="go">Hugging Face <span>↗</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="row" href="https://khanatracker.vercel.app" target="_blank" rel="noopener" aria-labelledby="p-khana">
+            <span class="n">05</span>
+            <div>
+              <h3 id="p-khana">Khana Tracker</h3>
+              <p>A calorie tracker for the Indian diet, because Indian food doesn't fit Western calorie tables. Track what you eat and keep a healthy routine.</p>
+            </div>
+            <span class="tags">Python · AI · OCR · Indian Diet</span>
+            <span class="go">Vercel <span>↗</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="row" href="https://stock-rivals-ronit0103s-projects.vercel.app" target="_blank" rel="noopener" aria-labelledby="p-stock">
+            <span class="n">06</span>
+            <div>
+              <h3 id="p-stock">Stock Rivals</h3>
+              <p>A competitive stock-picking game powered by AI. Predict, compete, and learn how markets move.</p>
+            </div>
+            <span class="tags">Game · AI · Finance</span>
+            <span class="go">Vercel <span>↗</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="row" href="https://github.com/Ronit0103/Bank-market-analysis" target="_blank" rel="noopener" aria-labelledby="p-bank">
+            <span class="n">07</span>
+            <div>
+              <h3 id="p-bank">Bank Market Analysis</h3>
+              <p>End-to-end EDA and classification on 41,188 bank customer records: data cleaning, class imbalance handling, and logistic regression vs random forest compared on ROC curves. AUC-ROC 0.95.</p>
+            </div>
+            <span class="tags">Python · pandas · scikit-learn · EDA</span>
+            <span class="go">GitHub <span>↗</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="row" href="https://github.com/Ronit0103/Ronit0103.github.io" target="_blank" rel="noopener" aria-labelledby="p-portfolio">
+            <span class="n">08</span>
+            <div>
+              <h3 id="p-portfolio">Portfolio Website</h3>
+              <p>This site. One hand-written HTML file with no framework.</p>
+            </div>
+            <span class="tags">HTML · CSS</span>
+            <span class="go">GitHub <span>↗</span></span>
+          </a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="label">02 — About</div>
+        <h2>Who I am</h2>
+      </div>
+      <div>
+        <p>I'm an Executive AI Automation Engineer. I started in data analytics and now work across AI automation, process engineering and data engineering. I don't limit myself to one field.</p>
+        <p>I learn by building, one project at a time.</p>
+        <ul class="skills" aria-label="Skills">
+          <li>AI Automation</li><li>Process Engineering</li><li>Data Engineering</li><li>Python</li><li>SQL</li><li>Agentic Coding</li><li>Data Analysis</li><li>Visualisation</li><li>Excel</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="label">03 — Contact</div>
+      <h2>Let's talk.</h2>
+      <a class="email" href="mailto:ronitpatange31@gmail.com">ronitpatange31@gmail.com</a>
+      <ul class="links">
+        <li><a href="https://linkedin.com/in/ronit-patange" target="_blank" rel="noopener">LinkedIn <small>ronit-patange ↗</small></a></li>
+        <li><a href="https://github.com/Ronit0103" target="_blank" rel="noopener">GitHub <small>Ronit0103 ↗</small></a></li>
+        <li><a href="https://huggingface.co/RonitP1" target="_blank" rel="noopener">Hugging Face <small>RonitP1 ↗</small></a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="label">© 2026 Ronit Patange</span>
+    <span class="label">Plain HTML &amp; CSS</span>
+  </div>
+</footer>
+<script>
+// Nav pill follows the section in the middle of the screen; sections fade up as they enter.
+(() => {
+  const ul = document.querySelector('nav ul');
+  const links = [...ul.querySelectorAll('a[href^="#"]')];
+  ul.insertAdjacentHTML('beforeend', '<li class="nav-pill" aria-hidden="true"></li>');
+  const pill = ul.lastElementChild;
+  let current = null;
+  const show = (a) => {
+    current = a;
+    links.forEach((l) => (l === a ? l.setAttribute('aria-current', 'true') : l.removeAttribute('aria-current')));
+    pill.style.opacity = a ? 1 : 0;
+    if (a) { pill.style.left = a.offsetLeft + 'px'; pill.style.width = a.offsetWidth + 'px'; }
+  };
+  const targets = new Map([[document.querySelector('.hero'), null]]);
+  links.forEach((a) => targets.set(document.querySelector(a.hash), a));
+  const spy = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) show(targets.get(e.target));
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  targets.forEach((_, el) => spy.observe(el));
+  addEventListener('resize', () => show(current));
+  document.fonts.ready.then(() => show(current));
+
+  const reveal = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); reveal.unobserve(e.target); }
+  }, { rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('main section > .wrap').forEach((el) => { el.classList.add('reveal'); reveal.observe(el); });
+})();
+</script>
+<script type="module">
+// Hero scene: an automation pipeline. Nodes sit in layers, pulses of work flow left to right
+// along the edges, and each node flashes as a pulse arrives. Purely decorative.
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js';
+
+const canvas = document.querySelector('.hero-3d');
+const hero = canvas.parentElement;
+let renderer;
+try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); }
+catch { canvas.remove(); }
+
+if (renderer) {
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 50);
+  camera.position.z = 11;
+  const group = new THREE.Group();
+  group.position.x = 1.6;
+  scene.add(group);
+
+  // Layers of nodes, x from left to right, each layer a loose disc in y/z.
+  const LAYERS = [5, 8, 10, 8, 5];
+  const nodes = [], layerOf = [];
+  LAYERS.forEach((count, l) => {
+    for (let i = 0; i < count; i++) {
+      const a = (i / count) * Math.PI * 2 + l * 0.7, r = 1.1 + Math.random() * 1.2;
+      nodes.push(new THREE.Vector3((l - 2) * 1.6, Math.sin(a) * r, Math.cos(a) * r * 0.8));
+      layerOf.push(l);
+    }
+  });
+  const first = (l) => LAYERS.slice(0, l).reduce((a, b) => a + b, 0);
+
+  // Each node links to two or three nodes in the next layer.
+  const next = nodes.map(() => []);
+  const linePos = [];
+  nodes.forEach((p, i) => {
+    const l = layerOf[i];
+    if (l === LAYERS.length - 1) return;
+    const start = first(l + 1), n = LAYERS[l + 1];
+    const want = Math.random() < 0.4 ? 3 : 2;
+    while (next[i].length < want) {
+      const j = start + Math.floor(Math.random() * n);
+      if (!next[i].includes(j)) { next[i].push(j); linePos.push(p.x, p.y, p.z, nodes[j].x, nodes[j].y, nodes[j].z); }
+    }
+  });
+
+  const lineMat = new THREE.LineBasicMaterial({ transparent: true, opacity: 0.55 });
+  const lineGeo = new THREE.BufferGeometry();
+  lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePos, 3));
+  group.add(new THREE.LineSegments(lineGeo, lineMat));
+
+  const nodeMat = new THREE.MeshBasicMaterial();
+  const nodeMesh = new THREE.InstancedMesh(new THREE.SphereGeometry(0.085, 14, 14), nodeMat, nodes.length);
+  group.add(nodeMesh);
+  const flash = nodes.map(() => 0);
+
+  // Pulses travel one edge at a time from the first layer to the last.
+  const PULSES = 22;
+  const pulseMat = new THREE.MeshBasicMaterial();
+  const pulseMesh = new THREE.InstancedMesh(new THREE.SphereGeometry(0.06, 10, 10), pulseMat, PULSES);
+  group.add(pulseMesh);
+  const spawn = (p) => {
+    p.from = Math.floor(Math.random() * LAYERS[0]);
+    p.to = next[p.from][Math.floor(Math.random() * next[p.from].length)];
+    p.t = 0; p.speed = 0.5 + Math.random() * 0.5; p.wait = Math.random() * 3;
+  };
+  const pulses = Array.from({ length: PULSES }, () => { const p = {}; spawn(p); return p; });
+
+  const recolor = () => {
+    const css = getComputedStyle(document.documentElement);
+    lineMat.color.set(css.getPropertyValue('--muted').trim());
+    nodeMat.color.set(css.getPropertyValue('--accent').trim());
+    pulseMat.color.set(css.getPropertyValue('--ink').trim());
+    draw();
+  };
+
+  const m = new THREE.Matrix4(), q = new THREE.Quaternion(), sc = new THREE.Vector3(), v = new THREE.Vector3();
+  const mouse = { x: 0, y: 0 };
+  addEventListener('pointermove', (e) => { mouse.x = e.clientX / innerWidth - 0.5; mouse.y = e.clientY / innerHeight - 0.5; }, { passive: true });
+
+  const step = (dt, time) => {
+    group.rotation.y += ((Math.sin(time * 0.15) * 0.35 + mouse.x * 0.5) - group.rotation.y) * 0.05;
+    group.rotation.x += ((mouse.y * 0.25) - group.rotation.x) * 0.05;
+    for (const p of pulses) {
+      if (p.wait > 0) { p.wait -= dt; continue; }
+      p.t += dt * p.speed;
+      if (p.t >= 1) {
+        flash[p.to] = 1;
+        const outs = next[p.to];
+        if (outs.length) { p.from = p.to; p.to = outs[Math.floor(Math.random() * outs.length)]; p.t = 0; }
+        else spawn(p);
+      }
+    }
+  };
+
+  function draw() {
+    nodes.forEach((p, i) => {
+      flash[i] *= 0.92;
+      sc.setScalar(1 + flash[i] * 0.9);
+      nodeMesh.setMatrixAt(i, m.compose(p, q, sc));
+    });
+    nodeMesh.instanceMatrix.needsUpdate = true;
+    pulses.forEach((p, i) => {
+      sc.setScalar(p.wait > 0 ? 0 : 1);
+      v.lerpVectors(nodes[p.from], nodes[p.to], Math.min(p.t, 1));
+      pulseMesh.setMatrixAt(i, m.compose(v, q, sc));
+    });
+    pulseMesh.instanceMatrix.needsUpdate = true;
+    renderer.render(scene, camera);
+  }
+
+  const resize = () => {
+    const { width, height } = hero.getBoundingClientRect();
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
+    // Pull the camera back on tall, narrow heroes so the whole pipeline still fits across.
+    const tan = Math.tan(THREE.MathUtils.degToRad(20));
+    camera.position.z = Math.max(11, 4.4 / (tan * camera.aspect));
+    // Wide screens: centre the pipeline in the empty upper right, above the Receipts card.
+    const wide = camera.aspect >= 1.2;
+    group.position.set(wide ? 0.5 * tan * camera.position.z * camera.aspect : 0, wide ? 1.3 : 0, 0);
+    camera.updateProjectionMatrix();
+    draw();
+  };
+  recolor();
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', recolor);
+  new ResizeObserver(resize).observe(hero);
+
+  // Animate only while the hero is on screen, the tab is visible and motion is allowed.
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  let onScreen = true, last = performance.now(), raf = 0;
+  const loop = (now) => {
+    raf = 0;
+    if (!onScreen || document.hidden || still.matches) return;
+    step(Math.min((now - last) / 1000, 0.05), now / 1000);
+    last = now;
+    draw();
+    raf = requestAnimationFrame(loop);
+  };
+  const kick = () => { if (!raf) { last = performance.now(); raf = requestAnimationFrame(loop); } };
+  new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; kick(); }).observe(hero);
+  document.addEventListener('visibilitychange', kick);
+  still.addEventListener('change', kick);
+}
+</script>
+</body>
+</html>
